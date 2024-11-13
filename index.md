@@ -7,12 +7,21 @@ categories: demo
 
 Add a short welcome message or introduction here. Aim to get the viewer interested in what follows! Guideline: 1 or 2 sentences.
 
+Welcome to my System on Chip (Soc) Video Graphics Array(Vga) project. Here I catalog the timeline of the cumulative work that lead to my final code.
+
 ## **Template VGA Design**
 ### **Project Set-Up**
 Summarise the project set-up and design flow. Include a screenshot of your own set-up, for example see the image of my Project Summary window below. Guideline 1 short paragraph.
 
 ![image](https://github.com/user-attachments/assets/ae01aa6d-d668-4c10-a8e2-8007570e6973)
-
+vga pinout and architecture diagram
+![20241113_124546](https://github.com/user-attachments/assets/0b805eb7-bbbc-43ed-9805-647757cbda31)
+timers with row/coloumn of vga explained
+![20241113_124552](https://github.com/user-attachments/assets/4df93d60-a11e-4cb7-ab2a-b61b71235988)
+Testbench architecture diagram
+![20241113_124600](https://github.com/user-attachments/assets/3ee6c123-57f5-4fe2-beca-e11fc48f8bc8)
+Picture of the vga in operation
+![20241111_160258](https://github.com/user-attachments/assets/48c6f5b4-66bc-4deb-840c-5c1da4161c84)
 
 ### **Template Code**
 Outline the structure and design of the Verilog code templates you were given. What do they do? Include reference to how a VGA interface works. Guideline: 2/3 short paragraphs, consider including screenshot(s).
