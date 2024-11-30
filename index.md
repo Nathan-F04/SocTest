@@ -12,14 +12,9 @@ Welcome to my System on Chip (Soc) Video Graphics Array(Vga) project. Here I cat
 ## **Template VGA Design**
 ### **Project Set-Up**
 Summarise the project set-up and design flow. Include a screenshot of your own set-up, for example see the image of my Project Summary window below. Guideline 1 short paragraph.
-
+My setup
 ![image](https://github.com/user-attachments/assets/ae01aa6d-d668-4c10-a8e2-8007570e6973)
-vga pinout and architecture diagram
-![20241113_124546](https://github.com/user-attachments/assets/0b805eb7-bbbc-43ed-9805-647757cbda31)
-timers with row/coloumn of vga explained
-![20241113_124552](https://github.com/user-attachments/assets/4df93d60-a11e-4cb7-ab2a-b61b71235988)
-Testbench architecture diagram
-![20241113_124600](https://github.com/user-attachments/assets/3ee6c123-57f5-4fe2-beca-e11fc48f8bc8)
+
 Picture of the vga in operation
 ![20241111_160258](https://github.com/user-attachments/assets/48c6f5b4-66bc-4deb-840c-5c1da4161c84)
 demon
@@ -28,6 +23,19 @@ square
 ![20241126_181706](https://github.com/user-attachments/assets/054cad8d-05dd-416d-9f2d-f75b27f3c295)
 Stripes
 ![20241126_185816](https://github.com/user-attachments/assets/29e85388-52fe-4d90-bf81-0f0475fa5287)
+
+State machine
+![20241130_122035](https://github.com/user-attachments/assets/aec0ec85-a29a-446b-ae2a-e0e4238cf312)
+
+Architecture diagram
+![20241130_120139](https://github.com/user-attachments/assets/593ef348-7df9-4f66-922e-d06a9e8fec59)
+
+Grid
+![20241130_122917](https://github.com/user-attachments/assets/e1599f77-4ed2-4deb-8e14-11d47ce46faf)
+
+Pinout
+![20241130_114624](https://github.com/user-attachments/assets/98b9606a-33e2-4b8b-949f-596ca53b7d3c)
+
 
 ### **Template Code**
 Outline the structure and design of the Verilog code templates you were given. What do they do? Include reference to how a VGA interface works. Guideline: 2/3 short paragraphs, consider including screenshot(s).
