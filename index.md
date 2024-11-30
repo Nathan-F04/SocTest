@@ -13,12 +13,6 @@ Summarise the project set-up and design flow. Include a screenshot of your own s
 My setup
 ![image](https://github.com/user-attachments/assets/ae01aa6d-d668-4c10-a8e2-8007570e6973)
 
-Architecture diagram
-![20241130_120139](https://github.com/user-attachments/assets/593ef348-7df9-4f66-922e-d06a9e8fec59)
-
-Grid
-![20241130_122917](https://github.com/user-attachments/assets/e1599f77-4ed2-4deb-8e14-11d47ce46faf)
-
 Pinout
 ![20241130_114624](https://github.com/user-attachments/assets/98b9606a-33e2-4b8b-949f-596ca53b7d3c)
 
@@ -26,7 +20,17 @@ Pinout
 ### **Template Code**
 Outline the structure and design of the Verilog code templates you were given. What do they do? Include reference to how a VGA interface works. Guideline: 2/3 short paragraphs, consider including screenshot(s).
 
-For this project we were given two templates to test. Initially we were given the VGAColorCycle.v file which operated using a state machine logic to transition through a series of colors. The statemachine used twelve bits and set the rgb values to generate the color desired (See below Fig B). The code would use a time delay to show a color for a period and then switch to the next state or color. Once the initial code was operational, we were given the VGAColorStripes.v file. This was a more complex file, using a series of if statements to check if the program was between a specific range of columns before implementing a specific color for said range. This lead to a series of columns with differing colors depending on the range of the column pixels ie blue for all pixels between pixel column 80 to 160. This code would serve as the foundation for how I would create my own project.
+The templates we were given are comprised of several parts. In VGA Top there is the *clk wizip*, *VGA Sync*, *VGA ColorCylce* (or *VGA ColorStripes* depending on the template) and *Logic assaignment* (See below Fig G). These logical blocks each have their own role to play along with the clock signal (*clk*), reset(*rst*), *h_sync* and *v_sync*. The signals vga_red, vga_green, vga_blue are the signals for the colors displayed. They are four bits long and together make a 12 bit number to generate a color with the rgb values. The code sets the pixel rgb value for a monitor in the range of 640x480 (See below Fig H) 
+
+Architecture diagram-Fig G
+![20241130_120139](https://github.com/user-attachments/assets/593ef348-7df9-4f66-922e-d06a9e8fec59)
+
+Grid
+![20241130_122917](https://github.com/user-attachments/assets/e1599f77-4ed2-4deb-8e14-11d47ce46faf)
+
+For this project we were given two templates to test. Initially we were given the VGAColorCycle.v file which operated using a state machine logic to transition through a series of colors. The statemachine used twelve bits and set the rgb values to generate the color desired (See below Fig B). The code would use a time delay to show a color for a period and then switch to the next state or color.
+
+Once the initial code was operational, we were given the VGAColorStripes.v file. This was a more complex file, using a series of if statements to check if the program was between a specific range of columns before implementing a specific color for said range. This lead to a series of columns with differing colors depending on the range of the column pixels ie blue for all pixels between pixel column 80 to 160. This code would serve as the foundation for how I would create my own project.
 
 State machine-Fig B
 ![20241130_122035](https://github.com/user-attachments/assets/aec0ec85-a29a-446b-ae2a-e0e4238cf312)
