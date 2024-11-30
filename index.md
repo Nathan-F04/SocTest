@@ -5,8 +5,6 @@ tags: fpga vga verilog
 categories: demo
 ---
 
-Add a short welcome message or introduction here. Aim to get the viewer interested in what follows! Guideline: 1 or 2 sentences.
-
 Welcome to my System on Chip (Soc) Video Graphics Array(Vga) project. Here I catalog the timeline of the cumulative work that lead to my final code.
 
 ## **Template VGA Design**
@@ -15,17 +13,10 @@ Summarise the project set-up and design flow. Include a screenshot of your own s
 My setup
 ![image](https://github.com/user-attachments/assets/ae01aa6d-d668-4c10-a8e2-8007570e6973)
 
-Picture of the vga in operation
-![20241111_160258](https://github.com/user-attachments/assets/48c6f5b4-66bc-4deb-840c-5c1da4161c84)
 demon
 ![20241125_172132](https://github.com/user-attachments/assets/3acf5298-f547-43af-baa8-fd58ea9744a7)
 square
 ![20241126_181706](https://github.com/user-attachments/assets/054cad8d-05dd-416d-9f2d-f75b27f3c295)
-Stripes
-![20241126_185816](https://github.com/user-attachments/assets/29e85388-52fe-4d90-bf81-0f0475fa5287)
-
-State machine
-![20241130_122035](https://github.com/user-attachments/assets/aec0ec85-a29a-446b-ae2a-e0e4238cf312)
 
 Architecture diagram
 ![20241130_120139](https://github.com/user-attachments/assets/593ef348-7df9-4f66-922e-d06a9e8fec59)
@@ -39,12 +30,23 @@ Pinout
 
 ### **Template Code**
 Outline the structure and design of the Verilog code templates you were given. What do they do? Include reference to how a VGA interface works. Guideline: 2/3 short paragraphs, consider including screenshot(s).
+
+For this project we were given two templates to test. Initially we were given the VGAColorCycle.v file which operated using a state machine logic to transition through a series of colors. The statemachine used twelve bits and set the rgb values to generate the color desired (See below Fig B). The code would use a time delay to show a color for a period and then switch to the next state or color. Once the initial code was operational, we were given the VGAColorStripes.v file. This was a more complex file, using a series of if statements to check if the program was between a specific range of columns before implementing a specific color for said range. This lead to a series of columns with differing colors depending on the range of the column pixels ie blue for all pixels between pixel column 80 to 160. This code would serve as the foundation for how I would create my own project.
+
+State machine-Fig B
+![20241130_122035](https://github.com/user-attachments/assets/aec0ec85-a29a-446b-ae2a-e0e4238cf312)
+
 ### **Simulation**
 Explain the simulation process. Reference any important details, include a well-selected screenshot of the simulation. Guideline: 1/2 short paragraphs.
 ### **Synthesis**
 Describe the synthesis and implementation processes. Consider including 1/2 useful screenshot(s). Guideline: 1/2 short paragraphs.
 ### **Demonstration**
 Perhaps add a picture of your demo. Guideline: 1/2 sentences.
+The implementation of VGAColorCylce showed a different color after a delay using a statemachine (See below Fig A). VGAColorStripes was a more complex file and showed a series of stripes based on the pixel range (See below Fig C).
+ColorCycle in operation-Fig A
+![20241111_160258](https://github.com/user-attachments/assets/48c6f5b4-66bc-4deb-840c-5c1da4161c84)
+Stripes in operation-Fig C
+![20241126_185816](https://github.com/user-attachments/assets/29e85388-52fe-4d90-bf81-0f0475fa5287)
 
 ## **My VGA Design Edit**
 Introduce your own design idea. Consider how complex/achievabble this might be or otherwise. Reference any research you do online (use hyperlinks).
