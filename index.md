@@ -13,11 +13,6 @@ Summarise the project set-up and design flow. Include a screenshot of your own s
 My setup
 ![image](https://github.com/user-attachments/assets/ae01aa6d-d668-4c10-a8e2-8007570e6973)
 
-demon
-![20241125_172132](https://github.com/user-attachments/assets/3acf5298-f547-43af-baa8-fd58ea9744a7)
-square
-![20241126_181706](https://github.com/user-attachments/assets/054cad8d-05dd-416d-9f2d-f75b27f3c295)
-
 Architecture diagram
 ![20241130_120139](https://github.com/user-attachments/assets/593ef348-7df9-4f66-922e-d06a9e8fec59)
 
@@ -42,6 +37,7 @@ Explain the simulation process. Reference any important details, include a well-
 Describe the synthesis and implementation processes. Consider including 1/2 useful screenshot(s). Guideline: 1/2 short paragraphs.
 ### **Demonstration**
 Perhaps add a picture of your demo. Guideline: 1/2 sentences.
+
 The implementation of VGAColorCylce showed a different color after a delay using a statemachine (See below Fig A). VGAColorStripes was a more complex file and showed a series of stripes based on the pixel range (See below Fig C).
 ColorCycle in operation-Fig A
 ![20241111_160258](https://github.com/user-attachments/assets/48c6f5b4-66bc-4deb-840c-5c1da4161c84)
@@ -50,14 +46,31 @@ Stripes in operation-Fig C
 
 ## **My VGA Design Edit**
 Introduce your own design idea. Consider how complex/achievabble this might be or otherwise. Reference any research you do online (use hyperlinks).
+
+My project idea is an even mixture of challenging and achievable given the time frame. My goal is to edit the VGAColorStripes code to generate rows instead of columns and within those columns, split them into five squares. This means I can edit the color of 25 squares that appear in any format I would want. The code would use a temporary variable to keep track of the sqaure generation as the range for row and column would be changing based on what square in what column would be drawn.
 ### **Code Adaptation**
 Briefly show how you changed the template code to display a different image. Demonstrate your understanding. Guideline: 1-2 short paragraphs.
+
+I first began editing the code by generating a square, this meant I had to check the values for both row and columns in my if statements.  This was slightly complex to wrap my head around initially but I began to think in terms of co-ordinates quite quickly (See below Fig D). Once a sqaure was generated I wanted to then begin using a temporary variable to increment through the columns as I had five if statements to check the range for columns with the same row value to test one column. The next step once a column was generated (See below Fig E), was to change both rows and columns if time wasn't an issue. If time became an issue I would then repeat the first five if statements with the rows manually edited. The coding wasn't always straight forward as the logic can be difficult to wrap your head around (See below Fig F).  
+
+Generating a square using a variable in the columns-Fig D
+![20241126_181706](https://github.com/user-attachments/assets/054cad8d-05dd-416d-9f2d-f75b27f3c295)
+
+Generating a column-Fig E
+INSERT IMAGE HERE
+
+demon-Fig F
+![20241125_172132](https://github.com/user-attachments/assets/3acf5298-f547-43af-baa8-fd58ea9744a7)
 ### **Simulation**
 Show how you simulated your own design. Are there any things to note? Demonstrate your understanding. Add a screenshot. Guideline: 1-2 short paragraphs.
 ### **Synthesis**
 Describe the synthesis & implementation outputs for your design, are there any differences to that of the original design? Guideline 1-2 short paragraphs.
 ### **Demonstration**
 If you get your own design working on the Basys3 board, take a picture! Guideline: 1-2 sentences.
+
+Detail here how far you got
+
+INSERT FINAL IMAGE HERE
 
 ## **More Markdown Basics**
 This is a paragraph. Add an empty line to start a new paragraph.
