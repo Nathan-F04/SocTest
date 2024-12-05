@@ -4,6 +4,52 @@ Title: FPGA VGA Driver Project
 Tags: fpga vga verilog
 Categories: demo
 ---
+My synthesis
+![92c6e9a3-edde-45a8-bd3f-8e2bda37bde8](https://github.com/user-attachments/assets/7dab268c-cc06-4620-be6d-8576eab58375)
+
+My schematic
+![4fb206b0-9305-402a-8780-0662d60138df](https://github.com/user-attachments/assets/bc1d2b0a-1243-43c8-bd11-0002ef899996)
+
+Zoomed in my schematic
+![468bd7ff-5015-44d4-86c4-bae092cb0372](https://github.com/user-attachments/assets/054ae6b4-6adc-485d-b6bc-d34f7df2ef8b)
+
+My simulation
+![708124b3-573e-487d-88ee-6777b0f7d726](https://github.com/user-attachments/assets/61f49808-f5d0-459b-a66e-def683742b20)
+
+My sim zoomed out
+![6db28e66-c5b3-4101-99b2-ab8bfd7eac84](https://github.com/user-attachments/assets/ca2f0fd2-020b-44d0-a2b7-41781f7a86d7)
+
+Color stripes synthesised design
+![04d057e9-6cd2-4d71-b65c-e2b78c31e0dc](https://github.com/user-attachments/assets/e4cc833f-6306-4b46-838f-28d61b8bfa0c)
+
+Stripes sim zoomed in
+![0fd8f165-b98d-4ca0-8cd5-fdf651650e9a](https://github.com/user-attachments/assets/55609dc2-575c-4cf6-b6f8-b18a807bf37a)
+
+Stipes sim zoomed out
+![68ddb1b1-3a91-481f-b227-522b5b28966a](https://github.com/user-attachments/assets/68993b88-a2d1-47f4-a9f8-d260018ceafe)
+
+color stripes schematic
+![c67055c2-c507-4932-a613-ac40ea863b6a](https://github.com/user-attachments/assets/5c788e3d-b265-4a86-9519-d72f31ffa1c1)
+
+Color stripes schematic zoomed in
+![0e486d52-c412-41cb-9792-f1b7a92a6fea](https://github.com/user-attachments/assets/58b82be9-3bcf-43f1-8b0f-1f378b3675a5)
+
+color cycle synthesis design
+![766468aa-b927-4d63-baca-624692be35c6](https://github.com/user-attachments/assets/00a965ec-c7a3-44ac-b5f2-2dfacc41fa93)
+
+color cycle schematic zoomed out
+![87cd4dfb-858f-415a-8a0c-6511d9eeacd5](https://github.com/user-attachments/assets/e34fc403-5fca-4747-8b68-e9ceca6848d2)
+
+color cycle schematic zoomed in
+![7f0c4be5-aee8-4783-9226-ef4c0420d341](https://github.com/user-attachments/assets/2555145e-f03a-4dcd-abe8-c42a7c65c144)
+
+
+
+
+
+
+
+
 
 Welcome to my System on Chip (Soc) Video Graphics Array (Vga) project. Here, I catalog the timeline of the cumulative work that lead to my final code.
 
