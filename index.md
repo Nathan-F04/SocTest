@@ -1,4 +1,4 @@
----
+![20241202_170129](https://github.com/user-attachments/assets/af1ab804-3006-4eb0-94d3-f7bb93cbc67f)---
 Layout: home
 Title: FPGA VGA Driver Project
 Tags: fpga vga verilog
@@ -88,7 +88,7 @@ Generating a square using a variable in the columns-Fig D
 ![20241126_181706](https://github.com/user-attachments/assets/054cad8d-05dd-416d-9f2d-f75b27f3c295)
 
 Generating a column-Fig E
-INSERT IMAGE HERE
+![20241202_151240](https://github.com/user-attachments/assets/5efbb48e-64c7-4e60-b778-1fb9c22f19af)
 
 demon-Fig F
 ![20241125_172132](https://github.com/user-attachments/assets/3acf5298-f547-43af-baa8-fd58ea9744a7)
@@ -118,11 +118,18 @@ If you get your own design working on the Basys3 board, take a picture! Guidelin
 
 The images below represent a full black screen (See below Fig I), an incrementing display which repeated the same row five times (See below Fig J) and finally, the concentric rings (See below Fig K).
 
-INSERT FINAL IMAGE HERE-I
+INSERT FINAL IMAGE HERE-I circles
+![20241202_170126](https://github.com/user-attachments/assets/73916ce6-403c-4e34-8049-ffb958a2688e)
 
-INSERT FINAL IMAGE HERE-J
+INSERT FINAL IMAGE HERE-J row
+![20241202_170129](https://github.com/user-attachments/assets/ba88b169-e83e-4992-8dec-d793d0fcae39)
 
-INSERT FINAL IMAGE HERE-K
+INSERT FINAL IMAGE HERE-K diag
+![20241202_170135_009](https://github.com/user-attachments/assets/a3795e07-015f-4ccd-afcb-a4629f9ef8a4)
+
+INSERT FINAL IMAGE HERE- GREEN
+![20241202_170125](https://github.com/user-attachments/assets/b035d2d3-b791-4f27-a202-e1f009109785)
+
 
 ## **More Markdown Basics**
 This is a paragraph. Add an empty line to start a new paragraph.
