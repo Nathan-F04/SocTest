@@ -1,16 +1,29 @@
-![20241202_170129](https://github.com/user-attachments/assets/af1ab804-3006-4eb0-94d3-f7bb93cbc67f)---
 Layout: home
 Title: FPGA VGA Driver Project
 Tags: fpga vga verilog
 Categories: demo
 ---
-REMEMBER TO PUT MY NAME ON THIS (Nathan Ferry)
 
-Welcome to my System on Chip (Soc) Video Graphics Array (Vga) project. Here, I catalog the timeline of the cumulative work that lead to my final code.
+Welcome to my System on Chip (Soc) Video Graphics Array (Vga) project. My name is Nathan Ferry and here, I catalog the timeline of the cumulative work that lead to my final code.
+
+## **Project Summary**
+### **Tools used**
+The goal of my project was to adapt template code to develop an FPGA VGA driver to display unique designs on a 640x480 display. Fristy, there is no point going any further without explaining the project set up and components. An FPGA is a Field Programmable Gate Array which is an integrated circuit comprising of logical blocks that can be reprogrammed [1]. This is a useful competitor to ASICs which are Applications-species integrated circuits. These ICs are customised and have only one use in contrast to FPGAs which is why ASICS aren't reprogrammable [2]. A video graphics array "is an analog interface standard for computer video output" [3]. This means the vga sends separate signals such as red, green and blue for the color displayed on for example a computer monitor along with signals such as vertical and horizontal signal sync [3]. Grouping these key terms we can see that the project was developed by testing new FPGA configurations which used the VGA to communicate with the monitor and display information. For the project intself, I used AMD Vivado Design Suite which can be used for "synthesis and analysis"[4] to, simulate, synthesise and generate a bitstream for my design and the design templates which I then uploaded to the board I used.  I used the Basys 3 Artix 7 FPGA Trainer Board [5] to upload my bitstream file to.
+
 
 ## **Template VGA Design**
 ### **Project Set-Up**
 Summarise the project set-up and design flow. Include a screenshot of your own set-up, for example see the image of my Project Summary window below. Guideline 1 short paragraph.
+
+The project setup on hardware was simple, it simply involved connecting the Artix-7 board to a computer monitor via a VGA to VGA connector. The computer was connnected to the board for code upload via a USB-A to USB-C connection. The project software setup was implemented on AMD Vivado Design Suite. I began by creating a new project. I downloaded source code (See below Fig idk) which included a template for *VGAColorCycle.v* which was one of two template designs. Upon creating the new project I added into *Design sources* *VGASync.v*, *VGAColorCycle.v* and *VGATop.v* files (See img). I edited the clock wizard at the creation of the project to INSERT WHAT EDITED. I added the *Basys3_Master.xdc* file to the *constraints* folder (see img). In the *Simulation Sources* folder there was *Testbench.v* and *VGATop.v* which as in *Design Sources* contained the clock, *VGASync.v* and *VGAColorCycle.v* (see img). An image of the project summary can be seen below (see img).
+
+PROJECT SOURCE HERE
+PRoject soures
+
+project constraint
+
+project sim sources
+
 My setup
 ![image](https://github.com/user-attachments/assets/ae01aa6d-d668-4c10-a8e2-8007570e6973)
 
@@ -21,7 +34,7 @@ Pinout
 ### **Template Code**
 Outline the structure and design of the Verilog code templates you were given. What do they do? Include reference to how a VGA interface works. Guideline: 2/3 short paragraphs, consider including screenshot(s).
 
-The templates we were given are comprised of several parts. In VGA Top there is the *clk wizip*, *VGA Sync*, *VGA ColorCylce* (or *VGA ColorStripes* depending on the template) and *Logic assaignment* (See below Fig G). These logical blocks each have their own role to play along with the clock signal (*clk*), reset(*rst*), *h_sync* and *v_sync*.  The clock signal is used for synchronisation for example, some code is executed on a positive clock edge. *VGA Sync* outputs *h_sync* and *v_sync* which stand for vertical and horizontal sync which is used for measuring the time across the horizontal and vertical axes. *VGA ColorCylce* (or *VGA ColorStripes* depending on the template) and *Logic assaignment* are closely intwined as the first outputs the red green and blue signals which is joined with logic to display the colors on output. The signals vga_red, vga_green, vga_blue are the signals for the colors displayed. They are four bits long and together make a 12 bit number to generate a color with the rgb values. The code sets the pixel rgb value for a monitor in the range of 480x640. (See below Fig H) 
+The templates we were given are comprised of several parts. In VGA Top there is the *clk wizip*, *VGA Sync*, *VGA ColorCylce* (or *VGA ColorStripes* depending on the template) and *Logic assaignment* (See below Fig G). These logical blocks each have their own role to play along with the clock signal (*clk*), reset(*rst*), *h_sync* and *v_sync*.  The clock signal is used for synchronisation for example, some code is executed on a positive clock edge. *VGA Sync* outputs *h_sync* and *v_sync* which stand for vertical and horizontal sync which is used for measuring the time across the horizontal and vertical axes of the monitor. "The sync signals ensure the display knows when to start a new line or frame" [3]. *VGA ColorCylce* (or *VGA ColorStripes* depending on the template) and *Logic assaignment* are closely intwined as the first outputs the red green and blue signals which is joined with logic to display the colors on output. The signals vga_red, vga_green, vga_blue are the signals for the colors displayed. They are four bits long and together make a 12 bit number to generate a color with the rgb values. The code sets the pixel rgb value for a monitor in the range of 480x640. (See below Fig H) 
 
 Architecture diagram-Fig G
 ![20241130_120139](https://github.com/user-attachments/assets/593ef348-7df9-4f66-922e-d06a9e8fec59)
@@ -29,9 +42,10 @@ Architecture diagram-Fig G
 Grid-Fig H
 ![20241130_122917](https://github.com/user-attachments/assets/e1599f77-4ed2-4deb-8e14-11d47ce46faf)
 
-For this project we were given two templates to test. Initially we were given the VGAColorCycle.v file which operated using a state machine logic to transition through a series of colors. The statemachine used twelve bits and set the rgb values to generate the color desired (See below Fig B). The code would use a time delay to show a color for a period and then switch to the next state or color.
+For this project we were given two templates to test. Initially we were given the *VGAColorCycle.v* file which operated using a state machine logic to transition through a series of colors. The statemachine used twelve bits and set the rgb values to generate the color desired (See below Fig B). The code would use a time delay (more in depth on the variable and count) to show a color for a period and then switch to the next state or color.
+The final result would be a loop of colors displayed on a monitor each for a fixed period of time.
 
-Once the initial code was operational, we were given the VGAColorStripes.v file. This was a more complex file, using a series of if statements to check if the program was between a specific range of columns before implementing a specific color for said range. This lead to a series of columns with differing colors depending on the range of the column pixels ie blue for all pixels between pixel column 80 to 160. These templates would serve as the foundation for how I would create my own project.
+Once the initial code was operational, we were given the VGAColorStripes.v file. This was a more complex file, using a series of if statements to check if the program was between a specific range of columns, before implementing a specific color for said range. This lead to a series of columns with differing colors depending on the range of the column pixels .i.e. blue for all pixels between pixel column 80 to 160. These templates would serve as the foundation for how I would create my own project.
 
 State machine-Fig B
 ![20241130_122035](https://github.com/user-attachments/assets/aec0ec85-a29a-446b-ae2a-e0e4238cf312)
@@ -148,3 +162,14 @@ A bullet list can be rendered as follows:
 Images can be added by uploading them to the repository in a /docs/assets/images folder, and then rendering using HTML via githubusercontent.com as shown in the example below.
 
 <img src="https://raw.githubusercontent.com/melgineer/fpga-vga-verilog/main/docs/assets/images/VGAPrjSrcs.png">
+
+
+REFERENCES 
+[1] arm, "What Is an FPGA?" [Online] Available: https://www.arm.com/glossary/fpga 
+[2]  Wikipedia, "Application-specific integrated circuit" [Online] Available: https://en.wikipedia.org/wiki/Application-specific_integrated_circuit
+[3] Michelle Wilson, "What is VGA? A Comprehensive Guide to Video Graphics Array" [Online] Available: https://www.hp.com/us-en/shop/tech-takes/what-is-vga-comprehensive-guide-video-graphics-array
+[4] Wikipedia, "Vivado" [Online] Available:https://en.wikipedia.org/wiki/Vivado
+[5] Diligent, "Basys 3 Artix-7 FPGA Trainer Board: Recommended for Introductory Users" [Online] Available:https://digilent.com/shop/basys-3-artix-7-fpga-trainer-board-recommended-for-introductory-users/
+[] , "" [Online] Available:
+
+
