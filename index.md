@@ -166,10 +166,15 @@ Images can be added by uploading them to the repository in a /docs/assets/images
 
 REFERENCES 
 [1] arm, "What Is an FPGA?" [Online] Available: https://www.arm.com/glossary/fpga 
+
 [2]  Wikipedia, "Application-specific integrated circuit" [Online] Available: https://en.wikipedia.org/wiki/Application-specific_integrated_circuit
+
 [3] Michelle Wilson, "What is VGA? A Comprehensive Guide to Video Graphics Array" [Online] Available: https://www.hp.com/us-en/shop/tech-takes/what-is-vga-comprehensive-guide-video-graphics-array
+
 [4] Wikipedia, "Vivado" [Online] Available:https://en.wikipedia.org/wiki/Vivado
+
 [5] Diligent, "Basys 3 Artix-7 FPGA Trainer Board: Recommended for Introductory Users" [Online] Available:https://digilent.com/shop/basys-3-artix-7-fpga-trainer-board-recommended-for-introductory-users/
+
 [] , "" [Online] Available:
 
 
