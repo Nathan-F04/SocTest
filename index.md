@@ -1,21 +1,22 @@
-Layout: home
+---
+Layout: Home
 Title: FPGA VGA Driver Project
-Tags: fpga vga verilog
-Categories: demo
+Tags: FPGA VGA Verilog
+Categories: Demo
 ---
 
 Welcome to my System on Chip (Soc) Video Graphics Array (Vga) project. My name is Nathan Ferry and here, I catalog the timeline of the cumulative work that lead to my final code.
 
 ## **Project Summary**
 ### **Tools used**
-The goal of my project was to adapt template code to develop an FPGA VGA driver to display unique designs on a 640x480 display. Fristy, there is no point going any further without explaining the project set up and components. An FPGA is a Field Programmable Gate Array which is an integrated circuit comprising of logical blocks that can be reprogrammed [1]. This is a useful competitor to ASICs which are Applications-species integrated circuits. These ICs are customised and have only one use in contrast to FPGAs which is why ASICS aren't reprogrammable [2]. A video graphics array "is an analog interface standard for computer video output" [3]. This means the vga sends separate signals such as red, green and blue for the color displayed on for example a computer monitor along with signals such as vertical and horizontal signal sync [3]. Grouping these key terms we can see that the project was developed by testing new FPGA configurations which used the VGA to communicate with the monitor and display information. For the project intself, I used AMD Vivado Design Suite which can be used for "synthesis and analysis"[4] to, simulate, synthesise and generate a bitstream for my design and the design templates which I then uploaded to the board I used.  I used the Basys 3 Artix 7 FPGA Trainer Board [5] to upload my bitstream file to.
+The goal of my project was to adapt template code to develop an FPGA VGA driver to display unique designs on a 640x480 display. Fristy, there is no point going any further without explaining the project set up and components. An FPGA is a Field Programmable Gate Array which is an integrated circuit (IC) comprising of logical blocks that can be reprogrammed [1]. This is a useful competitor to ASICs which are Applications-species integrated circuits. These ICs are customised and have only one use in contrast to FPGAs which is why ASICS aren't reprogrammable [2]. A video graphics array "is an analog interface standard for computer video output" [3]. This means the VGA sends separate signals such as red, green and blue for the color displayed on for example a computer monitor along with signals such as vertical and horizontal signal sync [3]. Grouping these key terms we can see that the project was developed by testing new FPGA configurations which used the VGA to communicate with the monitor and display information. For the project intself, I used AMD Vivado Design Suite which can be used for "synthesis and analysis"[4] to, simulate, synthesise and generate a bitstream for my design and the design templates which I then uploaded to the board I used.  I used the Basys 3 Artix 7 FPGA Trainer Board [5] to upload my bitstream file to and used verilog to program.
 
 
 ## **Template VGA Design**
 ### **Project Set-Up**
 Summarise the project set-up and design flow. Include a screenshot of your own set-up, for example see the image of my Project Summary window below. Guideline 1 short paragraph.
 
-The project setup on hardware was simple, it simply involved connecting the Artix-7 board to a computer monitor via a VGA to VGA connector. The computer was connnected to the board for code upload via a USB-A to USB-C connection. The project software setup was implemented on AMD Vivado Design Suite. I began by creating a new project. I downloaded source code, which included a template for *VGAColorCycle.v* which was one of two template designs. Upon creating the new project I added into *Design sources* *VGASync.v*, *VGAColorCycle.v* and *VGATop.v* files (See img). I edited the clock wizard at the creation of the project to INSERT WHAT EDITED. I added the *Basys3_Master.xdc* file to the *constraints* folder (see img). In the *Simulation Sources* folder there was *Testbench.v* and *VGATop.v* which as in *Design Sources* contained the clock, *VGASync.v* and *VGAColorCycle.v* (see img). An image of the project summary can be seen below (see img).
+The project setup on hardware was simple, it simply involved connecting the Artix-7 board to a computer monitor via a VGA to VGA connector. The computer was connnected to the board for code upload via a USB-A to USB-C connection. The project software setup was implemented on AMD Vivado Design Suite. I began by creating a new project. I downloaded source code, which included a template for *VGAColorCycle.v* which was one of two template designs. Upon creating the new project I added into *Design sources* *VGASync.v*, *VGAColorCycle.v* and *VGATop.v* files (See img). I edited the clock wizard at the creation of the project to run at 25MHz. This was so that the screen would display without any flickering[6]. I added the *Basys3_Master.xdc* file to the *constraints* folder (see img). In the *Simulation Sources* folder there was *Testbench.v* and *VGATop.v* which as in *Design Sources* contained the clock, *VGASync.v* and *VGAColorCycle.v* (see img). An image of the project summary can be seen below (see img).
 
 PRoject soures + constraint
 ![20241202_153315](https://github.com/user-attachments/assets/cd1a9935-ea37-4a49-81bc-7d2b90a6f2d8)
@@ -34,7 +35,7 @@ Pinout
 ### **Template Code**
 Outline the structure and design of the Verilog code templates you were given. What do they do? Include reference to how a VGA interface works. Guideline: 2/3 short paragraphs, consider including screenshot(s).
 
-The templates we were given are comprised of several parts. In VGA Top there is the *clk wizip*, *VGA Sync*, *VGA ColorCylce* (or *VGA ColorStripes* depending on the template) and *Logic assaignment* (See below Fig G). These logical blocks each have their own role to play along with the clock signal (*clk*), reset(*rst*), *h_sync* and *v_sync*.  The clock signal is used for synchronisation for example, some code is executed on a positive clock edge. *VGA Sync* outputs *h_sync* and *v_sync* which stand for vertical and horizontal sync which is used for measuring the time across the horizontal and vertical axes of the monitor. "The sync signals ensure the display knows when to start a new line or frame" [3]. *VGA ColorCylce* (or *VGA ColorStripes* depending on the template) and *Logic assaignment* are closely intwined as the first outputs the red green and blue signals which is joined with logic to display the colors on output. The signals vga_red, vga_green, vga_blue are the signals for the colors displayed. They are four bits long and together make a 12 bit number to generate a color with the rgb values. The code sets the pixel rgb value for a monitor in the range of 480x640. (See below Fig H) 
+The templates we were given are comprised of several parts. In VGA Top there is the *clk wizip*, *VGA Sync*, *VGA ColorCylce* (or *VGA ColorStripes* depending on the template) and *Logic assaignment* (See below Fig G). These logical blocks each have their own role to play along with the clock signal (*clk*), reset(*rst*), *h_sync* and *v_sync*.  The clock signal is used for synchronisation for example, some code is executed on a positive clock edge. *VGA Sync* outputs *h_sync* and *v_sync* which stand for vertical and horizontal sync which is used for measuring the time across the horizontal and vertical axes of the monitor. "The sync signals ensure the display knows when to start a new line or frame" [3]. *VGA ColorCylce* (or *VGA ColorStripes* depending on the template) and *Logic assaignment* are closely intwined as the first outputs the red green and blue signals which is joined with logic to display the colors on output. The signals *vga_red*, *vga_green* and *vga_blue* are the signals for the colors displayed. They are four bits long and together make a 12 bit number to generate a color with the rgb values. The code sets the pixel rgb value for a monitor in the range of 480x640. (See below Fig H) 
 
 Architecture diagram-Fig G
 ![20241130_120139](https://github.com/user-attachments/assets/593ef348-7df9-4f66-922e-d06a9e8fec59)
@@ -53,13 +54,18 @@ State machine-Fig B
 ### **Simulation**
 Explain the simulation process. Reference any important details, include a well-selected screenshot of the simulation. Guideline: 1/2 short paragraphs.
 
-Once the project was set up, the simulation would be ran in order to see if everything worked as intended. Here I will analyse the signals in the ColorStripes code but the signals operate in the same way for both my final design and in the ColorCycle code. Analysing the image below for the color stripes code, (Fig idk) it can be seen that the signals explained earlier such as *clk*, *rst*, *h_sync* and *v_sync* are present. They behave as expected as the clock is made of periodic pulses and the reset is kept low after initialising high. The clock is keeping everything synchronised and the reset wasn't called. The horizontal signal is low more often than vertical sync as the the vertical sync is brought low once the entire screen is written but the horizontal is for  when the program makes it to the end of rows. The rows and columns are incremented and we can see row increasing from 0 to 5 before repeating the pattern which matches the *h_sync* signal as expected. Columns are a green bar as they are incremented too fast to be seen in the image below since they are incremented while row is kept at a number ie row is 1 and column goes from 0 to 640. The color signals are seen next, they are either 0 or f and some overlap to generate different colors ie at one point there is three fs on top of each other to make the color white. 
+Once the project was set up, the simulation would be ran in order to see if everything worked as intended. It can also be used as a debugger which uses false signals to see how the design would react [7]. The signals won't be the actual ones expected but a scaled down version. Here I will analyse the signals generated from the *ColorStripes.v* code but the signals operate in the same way for both my final design and in the *ColorCycle.v* code. Analysing the image below for the color stripes code, (Fig idk) it can be seen that the signals explained earlier such as *clk*, *rst*, *h_sync* and *v_sync* are present. They behave as expected as the clock is made of periodic pulses and the reset is kept low after initialising high. The clock is keeping everything synchronised and the reset wasn't called. The horizontal signal is low more often than vertical sync as the the vertical sync is brought low once the entire screen is written but the horizontal is for  when the program makes it to the end of rows. The rows and columns are incremented and we can see row increasing from 0 to 5 before repeating the pattern which matches the *h_sync* signal as expected. The rows going from 0 to 5 and not the entire screen rows from 0 to 479 is an example of how the simulation scales down the actual design to save time as generating an accurate simulation would take too long. Columns are a green bar as they are incremented too fast to be seen in the image below since they are incremented while row is kept at a number while the entire span of columns is updated for said row ie row is 1 and column goes from 0 to 640. The color signals are seen next, they are either 0 or f and some overlap to generate different colors ie at one point there is three fs on top of each other to make the color white. They could be other letters or numbers depending on the colors needed to be generated .i.e. for a light orange the hexadecimal code would be e94. Since the hexadecimal values for the colors in color stripes seen were either full of red, green or blue or had none that is why only 0 or f is seen.
 
 Stipes sim zoomed out
 ![68ddb1b1-3a91-481f-b227-522b5b28966a](https://github.com/user-attachments/assets/68993b88-a2d1-47f4-a9f8-d260018ceafe)
 
 ### **Synthesis**
 Describe the synthesis and implementation processes. Consider including 1/2 useful screenshot(s). Guideline: 1/2 short paragraphs.
+
+Synthesis and implementation are used to first convert your code to a netlist (this is the synthesis), and then the placement and routing (this is the implementation). [8] Below you can see the synthesised design (see below) for *VGAColorCycle.v* and the schematic showing the logic of the hardware (see below). The schematic shows the same blocks from the template code section of this page, which is exactly what was predicted. The same logical blocks of the clock the VGA sync and the color cycle are seen.  Those logical blocks were explained earlier but the buffers at the end are representing each bit of red, green and blue output (as there are 4 bits for each color) and the vertical and horizontal sync have each a buffer of their own to represent those signals. There are also buffers for the clock and reset which feed into the logical blocks. 
+
+The same amount of buffers and logical blocks are present in the schematic for the color stripes design, but the logical block *u_vga_sync* outputs more signals due to the complexity of the program.
+
 
 color cycle synthesis design
 ![766468aa-b927-4d63-baca-624692be35c6](https://github.com/user-attachments/assets/00a965ec-c7a3-44ac-b5f2-2dfacc41fa93)
@@ -119,6 +125,8 @@ My sim zoomed out
 ### **Synthesis**
 Describe the synthesis & implementation outputs for your design, are there any differences to that of the original design? Guideline 1-2 short paragraphs.
 
+
+
 My synthesis
 ![92c6e9a3-edde-45a8-bd3f-8e2bda37bde8](https://github.com/user-attachments/assets/7dab268c-cc06-4620-be6d-8576eab58375)
 
@@ -170,12 +178,16 @@ REFERENCES
 
 [2]  Wikipedia, "Application-specific integrated circuit" [Online] Available: https://en.wikipedia.org/wiki/Application-specific_integrated_circuit
 
-[3] Michelle Wilson, "What is VGA? A Comprehensive Guide to Video Graphics Array" [Online] Available: https://www.hp.com/us-en/shop/tech-takes/what-is-vga-comprehensive-guide-video-graphics-array
+[3] M. Wilson, "What is VGA? A Comprehensive Guide to Video Graphics Array" [Online] Available: https://www.hp.com/us-en/shop/tech-takes/what-is-vga-comprehensive-guide-video-graphics-array
 
 [4] Wikipedia, "Vivado" [Online] Available:https://en.wikipedia.org/wiki/Vivado
 
 [5] Diligent, "Basys 3 Artix-7 FPGA Trainer Board: Recommended for Introductory Users" [Online] Available:https://digilent.com/shop/basys-3-artix-7-fpga-trainer-board-recommended-for-introductory-users/
 
-[] , "" [Online] Available:
+[6] M. Lynch, “System on Chip”, Lecture, ATU, Galway, 2024.
+
+[7] Diligent Reference, "Using the Simulator in Vivado" [Online] Available:https://digilent.com/reference/programmable-logic/guides/simulation#:~:text=The%20simulation%20environment%20itself%20is,to%20generate%20elaborate%20test%20conditions.
+
+[8] AMD, "Adaptive SoC & FPGA Support" [Online] Available: https://adaptivesupport.amd.com/s/question/0D52E00006hpkc2SAA/the-difference-between-implementation-and-synthesize?language=en_US
 
 
