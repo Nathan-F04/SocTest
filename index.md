@@ -15,14 +15,14 @@ The goal of my project was to adapt template code to develop an FPGA VGA driver 
 ### **Project Set-Up**
 Summarise the project set-up and design flow. Include a screenshot of your own set-up, for example see the image of my Project Summary window below. Guideline 1 short paragraph.
 
-The project setup on hardware was simple, it simply involved connecting the Artix-7 board to a computer monitor via a VGA to VGA connector. The computer was connnected to the board for code upload via a USB-A to USB-C connection. The project software setup was implemented on AMD Vivado Design Suite. I began by creating a new project. I downloaded source code (See below Fig idk) which included a template for *VGAColorCycle.v* which was one of two template designs. Upon creating the new project I added into *Design sources* *VGASync.v*, *VGAColorCycle.v* and *VGATop.v* files (See img). I edited the clock wizard at the creation of the project to INSERT WHAT EDITED. I added the *Basys3_Master.xdc* file to the *constraints* folder (see img). In the *Simulation Sources* folder there was *Testbench.v* and *VGATop.v* which as in *Design Sources* contained the clock, *VGASync.v* and *VGAColorCycle.v* (see img). An image of the project summary can be seen below (see img).
+The project setup on hardware was simple, it simply involved connecting the Artix-7 board to a computer monitor via a VGA to VGA connector. The computer was connnected to the board for code upload via a USB-A to USB-C connection. The project software setup was implemented on AMD Vivado Design Suite. I began by creating a new project. I downloaded source code, which included a template for *VGAColorCycle.v* which was one of two template designs. Upon creating the new project I added into *Design sources* *VGASync.v*, *VGAColorCycle.v* and *VGATop.v* files (See img). I edited the clock wizard at the creation of the project to INSERT WHAT EDITED. I added the *Basys3_Master.xdc* file to the *constraints* folder (see img). In the *Simulation Sources* folder there was *Testbench.v* and *VGATop.v* which as in *Design Sources* contained the clock, *VGASync.v* and *VGAColorCycle.v* (see img). An image of the project summary can be seen below (see img).
 
-PROJECT SOURCE HERE
-PRoject soures
+PRoject soures + constraint
+![20241202_153315](https://github.com/user-attachments/assets/cd1a9935-ea37-4a49-81bc-7d2b90a6f2d8)
 
-project constraint
 
 project sim sources
+![20241202_153318](https://github.com/user-attachments/assets/11e7bf16-7b93-4358-9410-29b94616b16d)
 
 My setup
 ![image](https://github.com/user-attachments/assets/ae01aa6d-d668-4c10-a8e2-8007570e6973)
@@ -53,8 +53,7 @@ State machine-Fig B
 ### **Simulation**
 Explain the simulation process. Reference any important details, include a well-selected screenshot of the simulation. Guideline: 1/2 short paragraphs.
 
-Stripes sim zoomed in
-![0fd8f165-b98d-4ca0-8cd5-fdf651650e9a](https://github.com/user-attachments/assets/55609dc2-575c-4cf6-b6f8-b18a807bf37a)
+Once the project was set up, the simulation would be ran in order to see if everything worked as intended. Here I will analyse the signals in the ColorStripes code but the signals operate in the same way for both my final design and in the ColorCycle code. Analysing the image below for the color stripes code, (Fig idk) it can be seen that the signals explained earlier such as *clk*, *rst*, *h_sync* and *v_sync* are present. They behave as expected as the clock is made of periodic pulses and the reset is kept low after initialising high. The clock is keeping everything synchronised and the reset wasn't called. The horizontal signal is low more often than vertical sync as the the vertical sync is brought low once the entire screen is written but the horizontal is for  when the program makes it to the end of rows. The rows and columns are incremented and we can see row increasing from 0 to 5 before repeating the pattern which matches the *h_sync* signal as expected. Columns are a green bar as they are incremented too fast to be seen in the image below since they are incremented while row is kept at a number ie row is 1 and column goes from 0 to 640. The color signals are seen next, they are either 0 or f and some overlap to generate different colors ie at one point there is three fs on top of each other to make the color white. 
 
 Stipes sim zoomed out
 ![68ddb1b1-3a91-481f-b227-522b5b28966a](https://github.com/user-attachments/assets/68993b88-a2d1-47f4-a9f8-d260018ceafe)
@@ -108,6 +107,8 @@ demon-Fig F
 ![20241125_172132](https://github.com/user-attachments/assets/3acf5298-f547-43af-baa8-fd58ea9744a7)
 ### **Simulation**
 Show how you simulated your own design. Are there any things to note? Demonstrate your understanding. Add a screenshot. Guideline: 1-2 short paragraphs.
+
+Once my project was set up, the simulation was ran (see below). The first simulation seen below is zoomed in to pico-seconds which lead to the seemingly static signals. Upon zooming out we see the simulation as we would expect it to behave (see below). Analysing the simulation the clock signal, vertical sync, reset and horizontal sync behave in more or less the exact same manner as in the other simulation for *ColorStripe.v*. The row and column registers do too as well as the colors and this is because the logic for this code is very much the same as the "ColorCycle.v" state machine. The colors are updated more often as the screen is split into 25 squares for each screen but this change is not visible in the color signals on such a small excerpt from the simulation. 
 
 My simulation
 ![708124b3-573e-487d-88ee-6777b0f7d726](https://github.com/user-attachments/assets/61f49808-f5d0-459b-a66e-def683742b20)
